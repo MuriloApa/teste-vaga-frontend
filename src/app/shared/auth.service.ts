@@ -58,7 +58,7 @@ export class AuthService {
   logout(): void {
     this.storageService.remove('token'); // Remove o Token do localStorage
     this.currentTokenSubject.next(null); // Define o Token como null no BehaviorSubject
-    this.router.navigate(['/user/login']); // Redireciona para a página de login
+    this.router.navigate(['/login']); // Redireciona para a página de login
   }
 
   // Retorna o valor atual do Token

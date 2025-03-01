@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import SecureLS from 'secure-ls';
-import { JwtToken } from '../models/user.model';
+import { JwtToken } from '../models/login.model';
 
 @Injectable({
   providedIn: 'root',
