@@ -25,8 +25,31 @@ export const routes: Routes = [
         ],
       },
       {
-        path: 'usuarios-inativos', component: UsuariosInativosComponent
-      }
+        path: 'usuarios-inativos',
+        component: UsuariosInativosComponent,
+      },
+      {
+        path: 'contatos',
+        children: [
+          { path: '', component: UsuariosListComponent },
+          { path: 'create', component: UsuariosCreateComponent },
+        ],
+      },
+      {
+        path: 'contatos-inativos',
+        component: UsuariosInativosComponent,
+      },
+      {
+        path: 'tipos',
+        children: [
+          { path: '', component: UsuariosListComponent },
+          { path: 'create', component: UsuariosCreateComponent },
+        ],
+      },
+      {
+        path: 'tipos-inativos',
+        component: UsuariosInativosComponent,
+      },
     ],
   },
 ];
