@@ -6,7 +6,6 @@ import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { catchError, map, merge, of, startWith, Subject, Subscription, switchMap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { UsuariosInativosService } from './usuarios-inativos.service';
 import { User } from '../../models/user.model';
@@ -14,7 +13,7 @@ import { UsuariosAtivarComponent } from '../usuarios/usuarios-ativar/usuarios-at
 
 @Component({
   selector: 'app-usuarios-inativos',
-  imports: [MatProgressSpinnerModule, MatTableModule, CommonModule, MatPaginator, RouterLink, MatButtonModule],
+  imports: [MatProgressSpinnerModule, MatTableModule, CommonModule, MatPaginator, MatButtonModule],
   templateUrl: './usuarios-inativos.component.html',
   styleUrl: './usuarios-inativos.component.scss',
 })

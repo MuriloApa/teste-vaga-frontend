@@ -8,13 +8,12 @@ import { catchError, map, merge, of, startWith, Subject, Subscription, switchMap
 import { UsuariosService } from '../usuarios.service';
 import { MatDialog } from '@angular/material/dialog';
 import { User } from '../../../models/user.model';
-import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { UsuariosDesativarComponent } from '../usuarios-desativar/usuarios-desativar.component';
 
 @Component({
   selector: 'app-usuarios-list',
-  imports: [MatProgressSpinnerModule, MatTableModule, CommonModule, MatPaginator, RouterLink, MatButtonModule],
+  imports: [MatProgressSpinnerModule, MatTableModule, CommonModule, MatPaginator, MatButtonModule],
   templateUrl: './usuarios-list.component.html',
   styleUrl: './usuarios-list.component.scss',
 })

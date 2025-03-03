@@ -6,7 +6,6 @@ import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { catchError, map, merge, of, startWith, Subject, Subscription, switchMap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { Tipo } from '../../models/tipo.model';
 import { TiposInativosService } from './tipos-inativos.service';
@@ -14,7 +13,7 @@ import { TiposAtivarComponent } from '../tipos/tipos-ativar/tipos-ativar.compone
 
 @Component({
   selector: 'app-tipos-inativos',
-  imports: [MatProgressSpinnerModule, MatTableModule, CommonModule, MatPaginator, RouterLink, MatButtonModule],
+  imports: [MatProgressSpinnerModule, MatTableModule, CommonModule, MatPaginator, MatButtonModule],
   templateUrl: './tipos-inativos.component.html',
   styleUrl: './tipos-inativos.component.scss'
 })

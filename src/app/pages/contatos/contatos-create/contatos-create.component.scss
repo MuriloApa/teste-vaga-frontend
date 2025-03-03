@@ -1,0 +1,25 @@
+button {
+  margin: 20px 15px 0px 0px;
+}
+
+.campo {
+  margin-left: 20px;
+}
+
+.label-nome {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+
+  mat-form-field {
+    margin-top: 10px;
+  }
+}
+
+.select{
+  width: 12%;
+}

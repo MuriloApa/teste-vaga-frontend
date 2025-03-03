@@ -1,7 +1,7 @@
 export interface Contato{
   id?: number;
   nome: string;
-  status: boolean;
+  status?: boolean;
   idusuario: number,
   idtipo: number,
   valor: string

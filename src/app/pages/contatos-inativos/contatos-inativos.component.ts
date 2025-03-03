@@ -6,7 +6,6 @@ import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { catchError, map, merge, of, startWith, Subject, Subscription, switchMap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { Contato } from '../../models/contato.model';
 import { ContatosInativosService } from './contatos-inativos.service';
@@ -14,7 +13,7 @@ import { ContatosAtivarComponent } from '../contatos/contatos-ativar/contatos-at
 
 @Component({
   selector: 'app-contatos-inativos',
-  imports: [MatProgressSpinnerModule, MatTableModule, CommonModule, MatPaginator, RouterLink, MatButtonModule],
+  imports: [MatProgressSpinnerModule, MatTableModule, CommonModule, MatPaginator, MatButtonModule],
   templateUrl: './contatos-inativos.component.html',
   styleUrl: './contatos-inativos.component.scss'
 })

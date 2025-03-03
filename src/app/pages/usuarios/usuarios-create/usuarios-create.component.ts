@@ -64,6 +64,6 @@ export class UsuariosCreateComponent implements OnInit {
   }
 
   cancel(): void {
-    this.router.navigate(['/paises']);
+    this.router.navigate(['/usuarios']);
   }
 }

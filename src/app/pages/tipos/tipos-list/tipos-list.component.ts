@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 import { catchError, map, merge, of, startWith, Subject, Subscription, switchMap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { User } from '../../../models/user.model';
-import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { TiposService } from '../tipos.service';
 import { TiposDesativarComponent } from '../tipos-desativar/tipos-desativar.component';
@@ -15,7 +14,7 @@ import { Tipo } from '../../../models/tipo.model';
 
 @Component({
   selector: 'app-tipos-list',
-  imports: [MatProgressSpinnerModule, MatTableModule, CommonModule, MatPaginator, RouterLink, MatButtonModule],
+  imports: [MatProgressSpinnerModule, MatTableModule, CommonModule, MatPaginator, MatButtonModule],
   templateUrl: './tipos-list.component.html',
   styleUrl: './tipos-list.component.scss'
 })

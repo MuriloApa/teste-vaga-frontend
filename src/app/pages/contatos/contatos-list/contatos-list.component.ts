@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 import { catchError, map, merge, of, startWith, Subject, Subscription, switchMap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { User } from '../../../models/user.model';
-import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { Contato } from '../../../models/contato.model';
 import { ContatosService } from '../contatos.service';
@@ -15,7 +14,7 @@ import { ContatosDesativarComponent } from '../contatos-desativar/contatos-desat
 
 @Component({
   selector: 'app-contatos-list',
-  imports: [MatProgressSpinnerModule, MatTableModule, CommonModule, MatPaginator, RouterLink, MatButtonModule],
+  imports: [MatProgressSpinnerModule, MatTableModule, CommonModule, MatPaginator, MatButtonModule],
   templateUrl: './contatos-list.component.html',
   styleUrl: './contatos-list.component.scss'
 })

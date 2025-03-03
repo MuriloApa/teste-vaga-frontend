@@ -1,5 +1,5 @@
 export interface Tipo{
   descricao: string;
-  status: boolean;
+  status?: boolean;
   id?: number;
 }
