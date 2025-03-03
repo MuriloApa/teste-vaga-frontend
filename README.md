@@ -4,7 +4,7 @@ Este projeto foi feito usando [Angular CLI](https://github.com/angular/angular-c
 
 ## Antes de começar
 
-Antes de começar, é necessário que o Node.JS esteja instalado.
+Antes de começar, é necessário que o Node.JS esteja instalado, recomenda-se a versão LTS mais atual.
 
 Mais informações sobre como realizar este processo em: https://nodejs.org/pt/download
 
