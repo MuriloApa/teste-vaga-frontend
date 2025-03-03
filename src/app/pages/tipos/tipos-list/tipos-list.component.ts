@@ -35,7 +35,7 @@ export class TiposListComponent implements AfterViewInit, OnDestroy {
   ) {}
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator; // Conecta o paginador à tabela
+    this.dataSource.paginator = this.paginator;
 
     const sub = merge(this.refresh, this.paginator.page)
       .pipe(
@@ -72,8 +72,8 @@ export class TiposListComponent implements AfterViewInit, OnDestroy {
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.tiposService.desativar(user.id).subscribe(() => {
-          this.paginator.firstPage(); // Volta para a primeira página
-          this.refresh.next(true); // Recarrega os dados
+          this.paginator.firstPage();
+          this.refresh.next(true);
           this.tiposService.showMessage('Tipo desativado com sucesso!');
         });
       }

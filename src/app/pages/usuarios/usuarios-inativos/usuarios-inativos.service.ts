@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../../enviroments/enviroments';
 import { User } from '../../../models/user.model';
 import { Observable } from 'rxjs';
-import { GenericService } from '../../../shared/generic.service';
+import { GenericService } from '../../../shared/generic-ativos.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({

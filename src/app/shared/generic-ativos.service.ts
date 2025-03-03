@@ -19,25 +19,15 @@ export class GenericService<T> {
     return this.http.post<T>(environment.URL_BASE + this.baseApi, objeto);
   }
 
-  update(id: number, objeto: T): Observable<T> {
-    return this.http.patch<T>(
-      environment.URL_BASE + this.baseApi + `/${id}`,
-      objeto
-    );
-  }
-
   list(): Observable<T[]> {
-    return this.http.get<T[]>(
-      environment.URL_BASE + this.baseApi + 's/'
+    return this.http.get<T[]>(environment.URL_BASE + this.baseApi + 's/ativos');
+  }
+
+  desativar(id?: number): Observable<void> {
+    return this.http.put<void>(
+      environment.URL_BASE + this.baseApi + `/${id}` + '/status/',
+      null
     );
-  }
-
-  desativar(id: number): Observable<void>{
-    return this.http.put<void>(environment.URL_BASE + this.baseApi + `/${id}` + '/status/', null);
-  }
-
-  ativar(id: number): Observable<void>{
-    return this.http.put<void>(environment.URL_BASE + this.baseApi + `/${id}` + '/status/', null);
   }
 
   showMessage(msg: string, isError: boolean = false): void {

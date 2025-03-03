@@ -7,11 +7,12 @@ import { routes } from './app.routes';
 import { MensagensService } from './shared/messages.service';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { jwtInterceptor } from './intercepts/jwt.interceptor';
+import { authInterceptor } from './intercepts/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     importProvidersFrom(MatSnackBarModule),
     MensagensService,
-    provideHttpClient(withInterceptors([jwtInterceptor]))]
+    provideHttpClient(withInterceptors([jwtInterceptor, authInterceptor]))]
 };

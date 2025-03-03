@@ -21,7 +21,7 @@ export class UsuariosListComponent implements AfterViewInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   isLoadingResults: boolean = true;
-  dataSource = new MatTableDataSource<User>(); // Substitui o array `data`
+  dataSource = new MatTableDataSource<User>();
   resultsLength: number = 0;
   subscriptions: Subscription[] = [];
   displayedColumns: string[] = ['id', 'nome', 'email', 'senha', 'actions'];
@@ -34,7 +34,7 @@ export class UsuariosListComponent implements AfterViewInit, OnDestroy {
   ) {}
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator; // Conecta o paginador à tabela
+    this.dataSource.paginator = this.paginator;
 
     const sub = merge(this.refresh, this.paginator.page)
       .pipe(
@@ -49,7 +49,7 @@ export class UsuariosListComponent implements AfterViewInit, OnDestroy {
           this.isLoadingResults = false;
           if (data) {
             this.resultsLength = data.length;
-            this.dataSource.data = data; // Atualiza os dados da tabela
+            this.dataSource.data = data;
             return data;
           }
           return [];

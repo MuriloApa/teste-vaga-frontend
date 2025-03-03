@@ -56,7 +56,7 @@ export class ContatosInativosComponent implements AfterViewInit, OnDestroy {
   ) {}
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator; // Conecta o paginador à tabela
+    this.dataSource.paginator = this.paginator;
 
     const sub = merge(this.refresh, this.paginator.page)
       .pipe(
@@ -71,7 +71,7 @@ export class ContatosInativosComponent implements AfterViewInit, OnDestroy {
           this.isLoadingResults = false;
           if (data) {
             this.resultsLength = data.length;
-            this.dataSource.data = data; // Atualiza os dados da tabela
+            this.dataSource.data = data;
             return data;
           }
           return [];

@@ -22,7 +22,7 @@ export class ContatosListComponent implements AfterViewInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   isLoadingResults: boolean = true;
-  dataSource = new MatTableDataSource<Contato>(); // Substitui o array `data`
+  dataSource = new MatTableDataSource<Contato>();
   resultsLength: number = 0;
   subscriptions: Subscription[] = [];
   displayedColumns: string[] = ['id', 'nome','id_usuario', 'id_tipo', 'valor', 'actions'];
@@ -35,7 +35,7 @@ export class ContatosListComponent implements AfterViewInit, OnDestroy {
   ) {}
 
   ngAfterViewInit(): void {
-    this.dataSource.paginator = this.paginator; // Conecta o paginador à tabela
+    this.dataSource.paginator = this.paginator;
 
     const sub = merge(this.refresh, this.paginator.page)
       .pipe(
@@ -64,16 +64,16 @@ export class ContatosListComponent implements AfterViewInit, OnDestroy {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
-  desativar(user: User): void {
+  desativar(contato: Contato): void {
     const dialogRef = this.dialog.open(ContatosDesativarComponent, {
-      data: user,
+      data: contato,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.contatosService.desativar(user.id).subscribe(() => {
-          this.paginator.firstPage(); // Volta para a primeira página
-          this.refresh.next(true); // Recarrega os dados
+        this.contatosService.desativar(contato.id).subscribe(() => {
+          this.paginator.firstPage();
+          this.refresh.next(true);
           this.contatosService.showMessage('Contato desativado com sucesso!');
         });
       }
