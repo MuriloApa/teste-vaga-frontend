@@ -13,17 +13,28 @@ Mais informações sobre como realizar este processo em: [Node.JS](https://nodej
 Antes de iniciar, é preciso instalar as depedências:
 
 ```bash
-npm install
+npm i
 ```
 
-Após isso, para iniciar um servidor de desenvolvimento local, execute:
+Após isso, para iniciar um servidor de desenvolvimento local, execute no diretório raiz do projeto:
+
+```bash
+npm start
+```
+
+Depois que o servidor estiver em execução, abra seu navegador e vá até `http://localhost:4200/`. O aplicativo será recarregado automaticamente sempre que você modificar qualquer um dos arquivos de origem.
+
+### Usando Angular cli
+
+É possível executar o projeto usando os comandos do angular cli
+
+Para iniciar um servidor de desenvolvimento local, execute no diretório raiz do projeto:
 
 ```bash
 ng serve
 ```
 
-Depois que o servidor estiver em execução, abra seu navegador e vá até `http://localhost:4200/`. O aplicativo será recarregado automaticamente sempre que você modificar qualquer um dos arquivos de origem.
-
 ## Melhorias futuras
 
-- Foi percebido que os tokens possuem tempo limite, uma futura implementação desta aplicação deve implementar uma verificação da expiração do token
+- Estilização das páginas
+- Definição de cores para o projeto
