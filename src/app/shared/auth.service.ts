@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from '../../enviroments/enviroments';
 import { JwtToken } from '../models/login.model';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -46,6 +47,8 @@ export class AuthService {
             // Armazena o Token no localStorage e no BehaviorSubject
             this.storageService.set('token', token);
             this.currentTokenSubject.next(token);
+
+            console.log(jwtDecode(token.access_token));
             return of(token);
           } else {
             return of(null);

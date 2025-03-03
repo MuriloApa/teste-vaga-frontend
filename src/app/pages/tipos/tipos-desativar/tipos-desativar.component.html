@@ -1,1 +1,7 @@
-<p>tipos-desativar works!</p>
+<div mat-dialog-content>
+  Tem certeza que deseja desativar o tipo "{{ data.descricao }}"?
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="false">Não</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial color="primary">Sim</button>
+</div>

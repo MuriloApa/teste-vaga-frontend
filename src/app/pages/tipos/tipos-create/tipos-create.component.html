@@ -1,1 +1,20 @@
-<p>tipos-create works!</p>
+<mat-card>
+  <mat-card-header><mat-card-title>Cadastrar novo tipo</mat-card-title></mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form">
+      <mat-form-field appearance="outline" style="width: 71.45%;" class="label-nome">
+        <mat-label>Descrição</mat-label>
+        <input matInput name="descricao" type="text" placeholder="Descrição do tipo" formControlName="descricao" required>
+        <mat-error *ngIf="form.get('descricao')?.hasError('required')">Campo é obrigatório</mat-error>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button (click)="save()" color="primary">Cadastrar</button>
+
+    <button mat-raised-button (click)="cancel()">Cancelar</button>
+  </mat-card-actions>
+</mat-card>
+
+
