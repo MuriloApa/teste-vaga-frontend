@@ -8,7 +8,6 @@ import { catchError, map, merge, of, startWith, Subject, Subscription, switchMap
 import { MatDialog } from '@angular/material/dialog';
 import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
-import { User } from '../../models/user.model';
 import { Tipo } from '../../models/tipo.model';
 import { TiposInativosService } from './tipos-inativos.service';
 import { TiposAtivarComponent } from '../tipos/tipos-ativar/tipos-ativar.component';
@@ -79,10 +78,6 @@ export class TiposInativosComponent implements AfterViewInit, OnDestroy {
         });
       }
     });
-  }
-
-  navigateToUsuariosCreate(): void {
-    this.router.navigate(['/paises/create']);
   }
 }
 

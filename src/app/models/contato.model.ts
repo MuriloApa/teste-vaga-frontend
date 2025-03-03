@@ -1,6 +1,8 @@
 export interface Contato{
-  idtipo: number;
-  idusuario: number;
+  id?: number;
   nome: string;
-  valor: number
+  status: boolean;
+  idusuario: number,
+  idtipo: number,
+  valor: string
 }

@@ -1,1 +1,8 @@
-<p>contatos-ativar works!</p>
+<h1 mat-dialog-title>Ativação de Contato</h1>
+<div mat-dialog-content>
+  Tem certeza que deseja ativar o contato do usuária(o) "{{ data.nome }}"?
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="false">Não</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial color="primary">Sim</button>
+</div>

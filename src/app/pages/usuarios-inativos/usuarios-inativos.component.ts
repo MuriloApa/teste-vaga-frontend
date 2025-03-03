@@ -79,8 +79,4 @@ export class UsuariosInativosComponent implements AfterViewInit, OnDestroy {
       }
     });
   }
-
-  navigateToUsuariosCreate(): void {
-    this.router.navigate(['/paises/create']);
-  }
 }
