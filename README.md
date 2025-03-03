@@ -10,7 +10,13 @@ Mais informações sobre como realizar este processo em: https://nodejs.org/pt/d
 
 ## Development server
 
-Para iniciar um servidor de desenvolvimento local, execute:
+Antes de iniciar, é preciso instalar as depedências:
+
+```bash
+npm install
+```
+
+Após isso, para iniciar um servidor de desenvolvimento local, execute:
 
 ```bash
 ng serve

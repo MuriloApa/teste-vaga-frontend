@@ -57,19 +57,19 @@ export class AuthService {
       );
   }
 
-  // Método de logout
+
   logout(): void {
-    this.storageService.remove('token'); // Remove o Token do localStorage
-    this.currentTokenSubject.next(null); // Define o Token como null no BehaviorSubject
-    this.router.navigate(['/login']); // Redireciona para a página de login
+    this.storageService.remove('token');
+    this.currentTokenSubject.next(null);
+    this.router.navigate(['/login']);
   }
 
-  // Retorna o valor atual do Token
+
   getCurrentTokenValue(): JwtToken | null {
     return this.currentTokenSubject.value;
   }
 
-  // Verifica se o usuário está autenticado
+
   isLoggedIn(): boolean {
     const token = this.getTokenStorage(false);
     return !!token; // Retorna true se o Token existir
@@ -80,11 +80,11 @@ export class AuthService {
     let token: JwtToken | null = null;
 
     try {
-      token = this.storageService.get('token'); // Tenta obter o Token
+      token = this.storageService.get('token');
     } catch (error) {
-      this.logout(); // Faz logout em caso de erro
+      this.logout();
       if (isRedirect) {
-        this.router.navigate(['/login']); // Redireciona para a página de login
+        this.router.navigate(['/login']);
       }
     }
 

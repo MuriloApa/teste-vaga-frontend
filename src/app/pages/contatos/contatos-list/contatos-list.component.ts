@@ -11,6 +11,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { Contato } from '../../../models/contato.model';
 import { ContatosService } from '../contatos.service';
 import { ContatosDesativarComponent } from '../contatos-desativar/contatos-desativar.component';
+import { UsuariosService } from '../../usuarios/usuarios.service';
+import { TiposService } from '../../tipos/tipos.service';
 
 @Component({
   selector: 'app-contatos-list',
@@ -28,13 +30,34 @@ export class ContatosListComponent implements AfterViewInit, OnDestroy {
   displayedColumns: string[] = ['id', 'nome','id_usuario', 'id_tipo', 'valor', 'actions'];
   refresh: Subject<boolean> = new Subject();
 
+  usuariosRecord: Record<number, string> = {};
+  tiposRecord: Record<number, string> = {};
+
   constructor(
     private readonly router: Router,
     private readonly contatosService: ContatosService,
+    private readonly usersService: UsuariosService,
+    private readonly tiposService: TiposService,
     private readonly dialog: MatDialog
   ) {}
 
+  mapear(): void{
+    const usuarios = this.usersService.list().subscribe((resp) =>{
+      for (const usuario of resp) {
+        this.usuariosRecord[ usuario.id !== undefined ? usuario.id: 0] = usuario.nome;
+      }
+    });
+
+    const tipos = this.tiposService.list().subscribe((resp) =>{
+      for (const tipo of resp) {
+        this.tiposRecord[ tipo.id !== undefined ? tipo.id: 0] = tipo.descricao;
+      }
+    });
+  }
+
   ngAfterViewInit(): void {
+    this.mapear();
+
     this.dataSource.paginator = this.paginator;
 
     const sub = merge(this.refresh, this.paginator.page)

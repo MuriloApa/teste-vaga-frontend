@@ -19,6 +19,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { Contato } from '../../../models/contato.model';
 import { ContatosInativosService } from './contatos-inativos.service';
 import { ContatosAtivarComponent } from '../contatos-ativar/contatos-ativar.component';
+import { UsuariosService } from '../../usuarios/usuarios.service';
+import { TiposService } from '../../tipos/tipos.service';
 
 @Component({
   selector: 'app-contatos-inativos',
@@ -49,13 +51,35 @@ export class ContatosInativosComponent implements AfterViewInit, OnDestroy {
   ];
   refresh: Subject<boolean> = new Subject();
 
+  usuariosRecord: Record<number, string> = {};
+  tiposRecord: Record<number, string> = {};
+
   constructor(
     private readonly router: Router,
     private readonly contatosInativosService: ContatosInativosService,
+    private readonly usersService: UsuariosService,
+    private readonly tiposService: TiposService,
     private readonly dialog: MatDialog
   ) {}
 
+  mapear(): void {
+    const usuarios = this.usersService.list().subscribe((resp) => {
+      for (const usuario of resp) {
+        this.usuariosRecord[usuario.id !== undefined ? usuario.id : 0] =
+          usuario.nome;
+      }
+    });
+
+    const tipos = this.tiposService.list().subscribe((resp) => {
+      for (const tipo of resp) {
+        this.tiposRecord[tipo.id !== undefined ? tipo.id : 0] = tipo.descricao;
+      }
+    });
+  }
+
   ngAfterViewInit(): void {
+    this.mapear();
+
     this.dataSource.paginator = this.paginator;
 
     const sub = merge(this.refresh, this.paginator.page)
