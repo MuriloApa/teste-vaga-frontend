@@ -1,10 +1,8 @@
-import { UsuariosAtivarComponent } from './../pages/usuarios/usuarios-ativar/usuarios-ativar.component';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { environment } from '../../enviroments/enviroments';
-import { ResponseDataList } from '../models/shared.model';
 
 @Injectable({
   providedIn: 'root',
