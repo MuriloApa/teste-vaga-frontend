@@ -1,3 +1,4 @@
+import { UsuariosAtivarComponent } from './../pages/usuarios/usuarios-ativar/usuarios-ativar.component';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -6,10 +7,9 @@ import { environment } from '../../enviroments/enviroments';
 import { ResponseDataList } from '../models/shared.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GenericService<T> {
-
   baseApi: string = '/';
 
   constructor(
@@ -18,10 +18,7 @@ export class GenericService<T> {
   ) {}
 
   create(objeto: T): Observable<T> {
-    return this.http.post<T>(
-      environment.URL_BASE + this.baseApi,
-      objeto
-    );
+    return this.http.post<T>(environment.URL_BASE + this.baseApi, objeto);
   }
 
   update(id: number, objeto: T): Observable<T> {
@@ -31,20 +28,18 @@ export class GenericService<T> {
     );
   }
 
-
-  list(
-    page: number,
-    limit: number,
-    search?: string
-  ): Observable<ResponseDataList<T>> {
-    let params = new HttpParams().set('page', page).set('limit', limit);
-    if (search?.trim()) {
-      params = params.set('search', search.trim());
-    }
-    return this.http.get<ResponseDataList<T>>(
-      environment.URL_BASE + this.baseApi,
-      { params }
+  list(): Observable<T[]> {
+    return this.http.get<T[]>(
+      environment.URL_BASE + this.baseApi + 's/'
     );
+  }
+
+  desativar(id: number): Observable<void>{
+    return this.http.put<void>(environment.URL_BASE + this.baseApi + `/${id}` + '/status/', null);
+  }
+
+  ativar(id: number): Observable<void>{
+    return this.http.put<void>(environment.URL_BASE + this.baseApi + `/${id}` + '/status/', null);
   }
 
   showMessage(msg: string, isError: boolean = false): void {
@@ -55,5 +50,4 @@ export class GenericService<T> {
       panelClass: isError ? ['msg-error'] : ['msg-success'],
     });
   }
-
 }

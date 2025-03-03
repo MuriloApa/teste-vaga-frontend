@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-header><mat-card-title>Cadastrar novo usuário</mat-card-title></mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form">
+      <mat-form-field appearance="outline" style="width: 71.45%;" class="label-nome">
+        <mat-label>Nome</mat-label>
+        <input matInput name="nome" type="text" placeholder="Nome do usuário" formControlName="nome" required>
+        <mat-error *ngIf="form.get('nome')?.hasError('required')">Campo é obrigatório</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" style="width: 40%;">
+        <mat-label>Email</mat-label>
+        <input matInput name="email" placeholder="Email do usuário" type="email" formControlName="email" required>
+        <mat-error *ngIf="form.get('email')?.hasError('required')">
+          Campo obrigatório
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="campo" style="width: 30%;">
+        <mat-label>Senha</mat-label>
+        <input matInput name="senha" placeholder="Senha do usuário" type="text" formControlName="senha" required>
+        <mat-error *ngIf="form.get('senha')?.hasError('required')">
+          Campo obrigatório
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button (click)="save()" color="primary">Cadastrar</button>
+
+    <button mat-raised-button (click)="cancel()">Cancelar</button>
+  </mat-card-actions>
+</mat-card>
+
+
