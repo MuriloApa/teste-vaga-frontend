@@ -1,24 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Tipo } from '../../models/tipo.model';
-import { environment } from '../../../enviroments/enviroments';
+import { Contato } from '../../../models/contato.model';
+import { environment } from '../../../../enviroments/enviroments';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class TiposInativosService {
-  baseApi: string = '/tipo';
+export class ContatosInativosService {
+  baseApi: string = '/contato';
 
   constructor(
     protected readonly snackBar: MatSnackBar,
     protected readonly http: HttpClient
   ) {}
 
-  list(): Observable<Tipo[]> {
-    return this.http.get<Tipo[]>(
-      environment.URL_BASE + this.baseApi + 's/inativos'
+  list(): Observable<Contato[]> {
+    return this.http.get<Contato[]>(
+      environment.URL_BASE + this.baseApi + 's/inaltivos'
     );
   }
 

@@ -4,12 +4,14 @@ import { catchError, tap, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/auth.service';
 
+
+//Este método de interceptar rotas foi aprendido nas aulas de Programação Web com o professor Humberto Lidio
 export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
   const authService = inject(AuthService);
   const router = inject(Router);
   const token = authService.getTokenStorage();
+
   if (!token) {
-    console.log("não enviou o token");
     return next(req);
   }
 

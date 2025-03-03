@@ -4,13 +4,13 @@ import { PageComponent } from './layout/page/page.component';
 import { authGuard } from './guards/auth.guard';
 import { UsuariosListComponent } from './pages/usuarios/usuarios-list/usuarios-list.component';
 import { UsuariosCreateComponent } from './pages/usuarios/usuarios-create/usuarios-create.component';
-import { UsuariosInativosComponent } from './pages/usuarios-inativos/usuarios-inativos.component';
+import { UsuariosInativosComponent } from './pages/usuarios/usuarios-inativos/usuarios-inativos.component';
 import { ContatosListComponent } from './pages/contatos/contatos-list/contatos-list.component';
 import { ContatosCreateComponent } from './pages/contatos/contatos-create/contatos-create.component';
-import { ContatosInativosComponent } from './pages/contatos-inativos/contatos-inativos.component';
+import { ContatosInativosComponent } from './pages/contatos/contatos-inativos/contatos-inativos.component';
 import { TiposListComponent } from './pages/tipos/tipos-list/tipos-list.component';
 import { TiposCreateComponent } from './pages/tipos/tipos-create/tipos-create.component';
-import { TiposInativosComponent } from './pages/tipos-inativos/tipos-inativos.component';
+import { TiposInativosComponent } from './pages/tipos/tipos-inativos/tipos-inativos.component';
 
 export const routes: Routes = [
   {

@@ -25,7 +25,7 @@ export class TiposListComponent implements AfterViewInit, OnDestroy {
   dataSource = new MatTableDataSource<Tipo>(); // Substitui o array `data`
   resultsLength: number = 0;
   subscriptions: Subscription[] = [];
-  displayedColumns: string[] = ['id', 'status', 'descricao', 'actions'];
+  displayedColumns: string[] = ['id', 'descricao', 'actions'];
   refresh: Subject<boolean> = new Subject();
 
   constructor(

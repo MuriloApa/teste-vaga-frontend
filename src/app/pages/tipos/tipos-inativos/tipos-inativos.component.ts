@@ -4,18 +4,33 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { catchError, map, merge, of, startWith, Subject, Subscription, switchMap } from 'rxjs';
+import {
+  catchError,
+  map,
+  merge,
+  of,
+  startWith,
+  Subject,
+  Subscription,
+  switchMap,
+} from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { Tipo } from '../../models/tipo.model';
+import { Tipo } from '../../../models/tipo.model';
 import { TiposInativosService } from './tipos-inativos.service';
-import { TiposAtivarComponent } from '../tipos/tipos-ativar/tipos-ativar.component';
+import { TiposAtivarComponent } from '../tipos-ativar/tipos-ativar.component';
 
 @Component({
   selector: 'app-tipos-inativos',
-  imports: [MatProgressSpinnerModule, MatTableModule, CommonModule, MatPaginator, MatButtonModule],
+  imports: [
+    MatProgressSpinnerModule,
+    MatTableModule,
+    CommonModule,
+    MatPaginator,
+    MatButtonModule,
+  ],
   templateUrl: './tipos-inativos.component.html',
-  styleUrl: './tipos-inativos.component.scss'
+  styleUrl: './tipos-inativos.component.scss',
 })
 export class TiposInativosComponent implements AfterViewInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -24,7 +39,7 @@ export class TiposInativosComponent implements AfterViewInit, OnDestroy {
   dataSource = new MatTableDataSource<Tipo>(); // Substitui o array `data`
   resultsLength: number = 0;
   subscriptions: Subscription[] = [];
-  displayedColumns: string[] = ['id', 'status', 'descricao', 'actions'];
+  displayedColumns: string[] = ['id', 'descricao', 'actions'];
   refresh: Subject<boolean> = new Subject();
 
   constructor(
@@ -79,4 +94,3 @@ export class TiposInativosComponent implements AfterViewInit, OnDestroy {
     });
   }
 }
-

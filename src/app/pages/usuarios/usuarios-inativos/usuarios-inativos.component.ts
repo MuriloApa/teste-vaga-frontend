@@ -4,32 +4,47 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { catchError, map, merge, of, startWith, Subject, Subscription, switchMap } from 'rxjs';
+import {
+  catchError,
+  map,
+  merge,
+  of,
+  startWith,
+  Subject,
+  Subscription,
+  switchMap,
+} from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { Contato } from '../../models/contato.model';
-import { ContatosInativosService } from './contatos-inativos.service';
-import { ContatosAtivarComponent } from '../contatos/contatos-ativar/contatos-ativar.component';
+import { UsuariosInativosService } from './usuarios-inativos.service';
+import { User } from '../../../models/user.model';
+import { UsuariosAtivarComponent } from '../usuarios-ativar/usuarios-ativar.component';
 
 @Component({
-  selector: 'app-contatos-inativos',
-  imports: [MatProgressSpinnerModule, MatTableModule, CommonModule, MatPaginator, MatButtonModule],
-  templateUrl: './contatos-inativos.component.html',
-  styleUrl: './contatos-inativos.component.scss'
+  selector: 'app-usuarios-inativos',
+  imports: [
+    MatProgressSpinnerModule,
+    MatTableModule,
+    CommonModule,
+    MatPaginator,
+    MatButtonModule,
+  ],
+  templateUrl: './usuarios-inativos.component.html',
+  styleUrl: './usuarios-inativos.component.scss',
 })
-export class ContatosInativosComponent  implements AfterViewInit, OnDestroy {
+export class UsuariosInativosComponent implements AfterViewInit, OnDestroy {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   isLoadingResults: boolean = true;
-  dataSource = new MatTableDataSource<Contato>(); // Substitui o array `data`
+  dataSource = new MatTableDataSource<User>();
   resultsLength: number = 0;
   subscriptions: Subscription[] = [];
-  displayedColumns: string[] = ['id', 'status', 'nome','id_usuario', 'id_tipo', 'valor', 'actions'];
+  displayedColumns: string[] = ['id', 'nome', 'email', 'senha', 'actions'];
   refresh: Subject<boolean> = new Subject();
 
   constructor(
     private readonly router: Router,
-    private readonly contatosInativosService: ContatosInativosService,
+    private readonly usuariosInativosService: UsuariosInativosService,
     private readonly dialog: MatDialog
   ) {}
 
@@ -41,7 +56,7 @@ export class ContatosInativosComponent  implements AfterViewInit, OnDestroy {
         startWith({}),
         switchMap(() => {
           this.isLoadingResults = true;
-          return this.contatosInativosService
+          return this.usuariosInativosService
             .list()
             .pipe(catchError(() => of(null)));
         }),
@@ -63,21 +78,21 @@ export class ContatosInativosComponent  implements AfterViewInit, OnDestroy {
     this.subscriptions.forEach((sub) => sub.unsubscribe());
   }
 
-  ativar(tipo: Contato): void {
-    const dialogRef = this.dialog.open(ContatosAtivarComponent, {
-      data: tipo,
+  ativar(user: User): void {
+    const dialogRef = this.dialog.open(UsuariosAtivarComponent, {
+      data: user,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.contatosInativosService.ativar(tipo.id).subscribe(() => {
+        this.usuariosInativosService.ativar(user.id).subscribe(() => {
           this.paginator.firstPage(); // Volta para a primeira página
           this.refresh.next(true); // Recarrega os dados
-          this.contatosInativosService.showMessage('Contato ativado com sucesso!');
+          this.usuariosInativosService.showMessage(
+            'Usuário ativado com sucesso!'
+          );
         });
       }
     });
   }
-
 }
-

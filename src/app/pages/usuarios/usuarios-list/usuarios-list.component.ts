@@ -24,7 +24,7 @@ export class UsuariosListComponent implements AfterViewInit, OnDestroy {
   dataSource = new MatTableDataSource<User>(); // Substitui o array `data`
   resultsLength: number = 0;
   subscriptions: Subscription[] = [];
-  displayedColumns: string[] = ['id', 'status', 'nome', 'email', 'senha', 'actions'];
+  displayedColumns: string[] = ['id', 'nome', 'email', 'senha', 'actions'];
   refresh: Subject<boolean> = new Subject();
 
   constructor(

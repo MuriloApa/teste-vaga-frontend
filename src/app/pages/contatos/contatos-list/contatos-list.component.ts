@@ -25,7 +25,7 @@ export class ContatosListComponent implements AfterViewInit, OnDestroy {
   dataSource = new MatTableDataSource<Contato>(); // Substitui o array `data`
   resultsLength: number = 0;
   subscriptions: Subscription[] = [];
-  displayedColumns: string[] = ['id', 'status', 'nome','id_usuario', 'id_tipo', 'valor', 'actions'];
+  displayedColumns: string[] = ['id', 'nome','id_usuario', 'id_tipo', 'valor', 'actions'];
   refresh: Subject<boolean> = new Subject();
 
   constructor(
